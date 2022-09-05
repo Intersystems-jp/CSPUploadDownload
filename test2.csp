@@ -1,0 +1,48 @@
+<html>
+<head>
+<script language="javascript">
+function go(oid){
+   alert(#server(..downloadImage(oid))#);
+}
+
+</script>
+
+<script language="cache" method="downloadImage" arguments="oid:%Integer" returntype="%String">
+    set x=##class(User.test).%OpenId(oid)
+    set upload=x.pics
+    set fname=x.pics.Attributes("FileName")
+    
+    // ファイルに保存したい場合はこちら
+    set stream=##class(%FileBinaryStream).%New()
+    do stream.LinkToFile("C:\temp\out\"_fname)
+    do stream.CopyFrom(upload)
+    do stream.SaveStream()
+    do stream.%Close()
+    quit "OK!"
+</script>
+
+<script language="cache" runat="server">
+    set upload=%request.MimeData("yourpics",1)   ;; uploadされたデータ
+    
+    // User.test クラスに保存
+    set x=##class(User.test).%New()
+    set sts=x.pics.CopyFromAndSave(upload)
+    do x.%Save()
+    set itemId=x.%Id()
+
+    // 先ほどセーブされたものを画面表示
+    set image=x.pics
+    set sid=image.GetStreamId()
+</script>
+
+</head>
+<body>
+<form name="f1">
+   <input type="button" value="download" onclick="go(#(itemId)#);">
+   <hr width="400" align="left">
+<center>
+<image src=%25CSP.StreamServer.cls?STREAMOID=#(..Encrypt(sid))#>
+</center>
+</form>
+</body>
+</html>

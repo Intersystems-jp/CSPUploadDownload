@@ -1,0 +1,10 @@
+<html>
+<head></head>
+<body>
+<form action="test2.csp" enctype="multipart/form-data" method=post> 
+   input your pics :
+   <input name=yourpics size=30 type=file>
+   <input type=submit value=go>
+</form>
+</body>
+</html>

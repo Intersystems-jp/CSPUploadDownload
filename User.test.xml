@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="IRIS" version="26" zv="IRIS for Windows (x86-64) 2022.1 (Build 209U)" ts="2022-09-02 17:43:35">
+<Class name="User.test">
+<ClassType>persistent</ClassType>
+<ProcedureBlock>1</ProcedureBlock>
+<Super>%Persistent</Super>
+<TimeChanged>66353,63522.3200661</TimeChanged>
+<TimeCreated>59777,32649.987461</TimeCreated>
+
+<Property name="pics">
+<Type>%FileBinaryStream</Type>
+</Property>
+
+<Storage name="Default">
+<Type>%Storage.Persistent</Type>
+<DataLocation>^User.testD</DataLocation>
+<DefaultData>testDefaultData</DefaultData>
+<IdLocation>^User.testD</IdLocation>
+<IndexLocation>^User.testI</IndexLocation>
+<StreamLocation>^User.testS</StreamLocation>
+<ExtentSize>100000</ExtentSize>
+<Data name="testDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>picture</Value>
+</Value>
+<Value name="3">
+<Value>pics</Value>
+</Value>
+</Data>
+<Property name="sex">
+<Selectivity>20.0000%</Selectivity>
+</Property>
+</Storage>
+</Class>
+</Export>
